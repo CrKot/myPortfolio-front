@@ -1,0 +1,12 @@
+FROM node:16.0.0
+RUN mkdir -p /myPortfolio/frontend
+WORKDIR /myPortfolio/frontend
+
+RUN npm install
+
+COPY . /myPortfolio/frontend/
+
+ENV HOST 0.0.0.0
+EXPOSE 3000
+
+CMD npm run dev
