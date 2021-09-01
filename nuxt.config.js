@@ -52,8 +52,8 @@ export default {
       },
     },
     redirect: {
-      login: 'user/sign-in',
-      logout: 'user/sign-in',
+      login: '/user/sign-in',
+      logout: '/user/sign-in',
       home: '/',
     },
   },

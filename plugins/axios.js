@@ -34,12 +34,17 @@ export default function ({ $axios, app }) {
         }
       }
       throw new Error(getError())
-    }
-    if (response.data.success && response.data.message) {
+    } else if (response.data.success && response.data.message) {
       app.store.dispatch('alert/showMessage', {
         type: 'success',
         message: response.data.message,
         duration: 2500,
+      })
+    } else if (response.data.success === true) {
+      app.store.dispatch('alert/showMessage', {
+        type: 'success',
+        message: 'успешно',
+        duration: 4000,
       })
     }
   })

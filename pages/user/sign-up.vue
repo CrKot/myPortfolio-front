@@ -1,23 +1,24 @@
 <template>
   <v-container>
     <div class="title">
-      <h2>
-        Привествую вас на своей странице портфолио, для продолжения необходимо
-        зарегистрировать нового пользователя
-      </h2>
+      <h2>Регистрация</h2>
     </div>
     <div class="form-container">
       <v-form ref="signup-form" class="form-container-fields">
-        <v-text-field
-          v-model="form.firstName"
-          :rules="form.firstNameRules"
-          label="Имя"
-        />
-        <v-text-field
-          v-model="form.lastName"
-          :rules="form.lastNameRules"
-          label="Фамилия"
-        />
+        <v-row>
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="form.firstName"
+              :rules="form.firstNameRules"
+              label="Имя"
+          /></v-col>
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="form.lastName"
+              :rules="form.lastNameRules"
+              label="Фамилия"
+          /></v-col>
+        </v-row>
         <v-text-field
           v-model="form.phoneNumber"
           :rules="form.phoneNumberRules"

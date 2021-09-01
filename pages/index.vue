@@ -9,7 +9,7 @@
           свой имеющийся и будущий код
         </h2>
       </div>
-      <v-div class="content">
+      <div class="content">
         <h3>
           Буду рад любому фидбэку с вашей стороны, это помогает мне развиваться
           как специалисту. Заранее спасибо!
@@ -24,7 +24,7 @@
             ><v-btn color="primary" class="btn">Войти</v-btn></NuxtLink
           >
         </div>
-      </v-div>
+      </div>
     </div>
     <div v-else>Решить что добавить</div>
   </v-container>
