@@ -1,11 +1,26 @@
 <template>
   <v-navigation-drawer v-if="$auth.loggedIn" v-model="drawer" fixed app>
+    <v-img :src="'/img/myFoto1.jpg'" />
     <v-list>
       <v-list-item>
-        <div>Будет допилен позже</div>
+        <v-list-item-action>
+          <v-icon>mdi-signal</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title v-text="'Навигация по блогу'" />
+        </v-list-item-content>
       </v-list-item>
-      <v-list-item>
-        <div>{{ auth }}</div>
+      <v-list-item
+        v-for="(page, i) in pages"
+        :key="i"
+        color="blue"
+        :to="page.to"
+        exact
+        router
+      >
+        <v-list-item-content>
+          <v-list-item-title v-text="page.title" />
+        </v-list-item-content>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -15,7 +30,16 @@
 export default {
   data() {
     return {
-      auth: JSON.stringify(this.$auth.user, null, 2),
+      pages: [
+        {
+          title: 'Обо мне',
+          to: '/',
+        },
+        {
+          title: 'Мои проекты',
+          to: '/projects',
+        },
+      ],
     }
   },
   computed: {

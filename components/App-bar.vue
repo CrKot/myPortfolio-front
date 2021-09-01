@@ -1,7 +1,7 @@
 <template>
   <v-app-bar app fixed elevation="0">
     <v-app-bar-nav-icon v-if="$auth.loggedIn" @click="drawer = !drawer" />
-    <div>Portfolio Artem_Krv artemsalikhov@mail.ru</div>
+    <div>Проект-портфолио. Kонтакты email: ArtemSalikhov@mail.ru</div>
     <v-spacer />
     <div>
       <small>
