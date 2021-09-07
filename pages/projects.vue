@@ -16,7 +16,6 @@
               hide-delimiters
             >
               <v-carousel-item
-                exact
                 v-for="image in project.images"
                 :key="image"
                 max-height="20vw"
