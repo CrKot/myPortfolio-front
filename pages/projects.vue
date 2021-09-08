@@ -1,10 +1,10 @@
 <template>
   <v-container fluid>
-    <div class="title">
-      <h2 class="text-center">
+    <div class="title text-center">
+      <span>
         На данной странице представлены мои проекты, которые я успел и имел
         возможность добавить в открытый репозиторий
-      </h2>
+      </span>
     </div>
     <v-row>
       <v-col v-for="(project, index) in projects" :key="index" cols="12" md="6">
@@ -12,24 +12,26 @@
           <v-card class="mx-auto card-item">
             <v-carousel
               v-if="project.images.length > 1"
-              height="auto"
+              height="20vw"
               hide-delimiters
             >
               <v-carousel-item
                 v-for="image in project.images"
                 :key="image"
                 max-height="20vw"
-                :src="'/img/' + image"
-              />
+              >
+                <v-img c :src="'/img/' + image" />
+              </v-carousel-item>
             </v-carousel>
             <v-img
               v-else
-              height="20vw"
               contain
+              height="20vw"
               :src="'/img/' + project.images[0]"
             />
-            <v-card-title>{{ project.title }}</v-card-title>
-
+            <v-card-title style="line-height: 1em">{{
+              project.title
+            }}</v-card-title>
             <v-card-subtitle>{{ project.subtitle }}</v-card-subtitle>
             <v-card-actions>
               <v-btn
@@ -91,8 +93,11 @@ export default {
   height: 100%;
 }
 @media screen and (max-width: 900px) {
-  h2 {
-    font-size: 85%;
+  .title {
+    line-height: 0.7em;
+  }
+  span {
+    font-size: 80%;
   }
 }
 </style>

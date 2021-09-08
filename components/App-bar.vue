@@ -1,7 +1,9 @@
 <template>
   <v-app-bar app fixed elevation="0">
     <v-app-bar-nav-icon v-if="$auth.loggedIn" @click="drawer = !drawer" />
-    <div>Проект-портфолио. Kонтакты email: ArtemSalikhov@mail.ru</div>
+    <div class="header">
+      <span>Проект-портфолио. Kонтакты email: ArtemSalikhov@mail.ru</span>
+    </div>
     <v-spacer />
     <div>
       <small>
@@ -74,3 +76,14 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+@media screen and (max-width: 900px) {
+  .header {
+    line-height: 1em;
+  }
+  span {
+    font-size: 80%;
+  }
+}
+</style>
