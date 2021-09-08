@@ -19,7 +19,12 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify', '@nuxtjs/dotenv'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
+  ],
 
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/auth-next'],
 

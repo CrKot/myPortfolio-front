@@ -1,4 +1,12 @@
-export default [
+type Project = {
+  title: string,
+  subtitle: string,
+  description: string,
+  images: Array<string>,
+  link: string
+}
+
+ const projects: Project[] = [
   {
     title: 'Текущий проект портфолио',
     subtitle:
@@ -29,4 +37,6 @@ export default [
     images: ['mapPoint1.jpg', 'mapPoint2.jpg'],
     link: 'https://github.com/CrKot/mapsMarkers',
   },
-]
+ ]
+
+export default projects

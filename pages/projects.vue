@@ -42,6 +42,7 @@
                 >Перейти в репозиторий проекта</v-btn
               >
               <v-spacer class="mt-auto" />
+              <!-- сделать раздельный шоу -->
               <v-btn icon @click="showPortfolio = !showPortfolio">
                 <v-icon>{{
                   showPortfolio ? 'mdi-chevron-up' : 'mdi-chevron-down'
@@ -66,14 +67,13 @@
 </template>
 
 <script>
-import projectsList from '~/util/projectsList.js'
+import projectsList from '~/util/projectsList.ts'
 
 export default {
   middleware: 'authorized',
   data() {
     return {
       projects: projectsList,
-      showAdmin: false,
       showPortfolio: false,
     }
   },
