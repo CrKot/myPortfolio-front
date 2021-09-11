@@ -3,6 +3,7 @@
     <v-app-bar-nav-icon v-if="$auth.loggedIn" @click="drawer = !drawer" />
     <div class="header">
       <span>Проект-портфолио. Kонтакты email: ArtemSalikhov@mail.ru</span>
+      <SendMessageDialog />
     </div>
     <v-spacer />
     <div>
@@ -48,7 +49,12 @@
 </template>
 
 <script>
+import SendMessageDialog from '~/components/FormSendMessage.vue'
+
 export default {
+  components: {
+    SendMessageDialog
+  },
   data() {
     return {
       theme: 'Ночная тема',

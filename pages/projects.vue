@@ -9,7 +9,7 @@
     <v-row>
       <v-col v-for="(project, index) in projects" :key="index" cols="12" md="6">
         <div>
-          <v-card class="mx-auto card-item">
+          <v-card class="mx-auto">
             <v-carousel
               v-if="project.images.length > 1"
               height="20vw"
@@ -88,9 +88,6 @@ export default {
 <style scoped>
 .title {
   margin-bottom: 2%;
-}
-.card-item {
-  height: 100%;
 }
 @media screen and (max-width: 900px) {
   .title {

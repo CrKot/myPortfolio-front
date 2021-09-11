@@ -18,7 +18,7 @@
         exact
         router
       >
-        <v-list-item-content>
+        <v-list-item-content class="nav-content" >
           <v-list-item-title v-text="page.title" />
         </v-list-item-content>
       </v-list-item>
@@ -48,9 +48,15 @@ export default {
         return this.$store.state.navigationDrawer.drawer
       },
       set(value) {
-        return value
+        this.$store.dispatch('navigationDrawer/toggleDrawer', value)
       },
     },
   },
 }
 </script>
+<style scoped>
+.nav-content:hover {
+  transition: 2s;
+  color: blue;
+}
+</style>

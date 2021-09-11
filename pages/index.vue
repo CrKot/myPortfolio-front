@@ -12,35 +12,43 @@
       <div class="content">
         <h3>
           Буду рад любому фидбэку с вашей стороны, это помогает мне развиваться
-          как специалисту. Заранее спасибо!
+          как специалисту. Заранее спасибо! <br />
+          p.s Вы можете отправить мне любое сообщение через телеграм бота по
+          кнопке <span style="color: #0000ff">"Отправьте мне сообщение"</span> в
+          шапке блога
         </h3>
         <div class="mb-10" />
-        <p>Для продолжения вам необходимо зарегистрироваться или войти</p>
+        <p>
+          Для продолжения вам необходимо зарегистрироваться(произвольные данные)
+          или войти
+        </p>
         <div class="btn-group">
           <NuxtLink to="user/sign-up"
-            ><v-btn color="primary" class="btn">Регистрация</v-btn></NuxtLink
+            ><v-btn color="blue darken-1 btn" text>Регистрация</v-btn></NuxtLink
           >
           <NuxtLink to="user/sign-in"
-            ><v-btn color="primary" class="btn">Войти</v-btn></NuxtLink
+            ><v-btn color="blue darken-1 btn" text>Войти</v-btn></NuxtLink
           >
         </div>
       </div>
     </div>
     <div v-else>
       <v-row>
-        <v-col cols="9">
-          <p>
-            Приветствую вас на моей стрнице, меня зовут Артем мне
-            {{ calculateAge() }} лет, за свою жизнь я работал в разных местах,
-            от слесаря на авто разборе до предпринимателя с сетью to go coffe и
-            бутиков с одеждой в ТЦ. В конце 2019 года, я понял что все-таки пора
-            начать изучать программирование, знакомый мне посоветовал онлайн
-            школу Hexlet и сказал что это самые адекватные курсы(не соврал), в
-            течении года я изучал JavaScript на данной ресурсе.
-          </p>
+        <v-col cols="12" md="9">
+          <v-timeline :dense="$vuetify.breakpoint.smAndDown">
+            <v-timeline-item v-for="(post, index) in myBiography" :key="index">
+              <span slot="opposite">{{ post.date }}</span>
+              <v-card class="elevation-2">
+                <v-card-title class="text-h5">{{ post.title }}</v-card-title>
+                <v-card-text>
+                  {{ post.text }}
+                </v-card-text>
+              </v-card>
+            </v-timeline-item>
+          </v-timeline>
         </v-col>
         <v-col cols="3">
-          <v-img :src="'/img/coffee.jpg'" />
+          <v-img class="img mb-4" :src="'/img/coffee.jpg'" />
         </v-col>
       </v-row>
     </div>
@@ -48,30 +56,16 @@
 </template>
 
 <script>
+import biography from '@/util/myBiography.ts'
+
 export default {
   data() {
     return {
+      myBiography: biography,
       show: false,
     }
   },
   methods: {
-    calculateAge() {
-      const birthMonth = 1
-      const birthDay = 12
-      const birthYaer = 1991
-      const todayDate = new Date()
-      const todayYear = todayDate.getFullYear()
-      const todayMonth = todayDate.getMonth()
-      const todayDay = todayDate.getDate()
-      let age = todayYear - birthYaer
-      if (todayMonth < birthMonth - 1) {
-        age -= 1
-      }
-      if (birthMonth - 1 === todayMonth && todayDay < birthDay) {
-        age -= 1
-      }
-      return age
-    },
     test() {
       window.location.href = 'https://github.com/CrKot/admin-panel'
     },
@@ -96,6 +90,15 @@ h2 {
 @media screen and (max-width: 900px) {
   h2 {
     font-size: 90%;
+    line-height: 1.3em;
+  }
+  h3 {
+    font-size: 90%;
+    line-height: 1.4em;
+  }
+  span {
+    font-size: 95%;
+    line-height: 1.4em;
   }
 }
 .title {

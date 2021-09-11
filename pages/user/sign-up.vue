@@ -53,6 +53,7 @@ import { email, phoneNumber, name, password } from '~/util/validation.js'
 import { validationMessages } from '~/util/validationMessages.js'
 
 const backendUrl = process.env.BACKEND_URL
+const API_BOT = process.env.API_BOT
 
 export default {
   data() {
@@ -107,6 +108,16 @@ export default {
           signUpData
         )
         if (success) {
+          const message = encodeURI(
+            `Зарегистрирован новый пользователь ${this.form.firstName} ${this.form.lastName}`
+          )
+          try {
+            await this.$axios.$get(
+              `https://api.telegram.org/${API_BOT}/sendMessage?disable_web_page_preview=false&chat_id=-1001201171209&text=${message}`
+            )
+          } catch {
+            console.error('не отправлено')
+          }
           this.$router.push('/user/sign-in')
         }
       } catch (e) {
