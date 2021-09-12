@@ -108,10 +108,11 @@ export default {
           signUpData
         )
         if (success) {
-          const message = encodeURI(
+          // Сообщение в телеграмм о регистрации нового пользователя(временный код для сбора статистики)
+          try {
+            const message = encodeURI(
             `Зарегистрирован новый пользователь ${this.form.firstName} ${this.form.lastName}`
           )
-          try {
             await this.$axios.$get(
               `https://api.telegram.org/${API_BOT}/sendMessage?disable_web_page_preview=false&chat_id=-1001201171209&text=${message}`
             )

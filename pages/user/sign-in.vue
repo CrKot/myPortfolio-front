@@ -29,6 +29,7 @@
 <script>
 import { email, password } from '~/util/validation.js'
 import { validationMessages } from '~/util/validationMessages.js'
+const API_BOT = process.env.API_BOT
 
 export default {
   data() {
@@ -52,7 +53,15 @@ export default {
     async signIn() {
       const isValid = this.$refs['signin-form'].validate()
       if (!isValid) return
-
+      // Сообщение в телеграмм о входе(временный код для сбора статистики)
+      try {
+        const message = encodeURI(`Вход зарегистрированного пользователя ${this.form.email}`)
+        await this.$axios.$get(
+          `https://api.telegram.org/${API_BOT}/sendMessage?disable_web_page_preview=false&chat_id=-1001201171209&text=${message}`
+        )
+      } catch {
+        console.error('не отправлено')
+      }
       try {
         this.form.email = this.form.email.toLowerCase()
         await this.$auth.loginWith('local', {
