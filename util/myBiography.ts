@@ -3,11 +3,12 @@ type Biography = {
   title: string
   text: string
 }
-const myBirthday = {
+const myBirthday: {day: number, month: number, year: number} = {
   day: 12,
   month: 1,
   year: 1991,
 }
+
 const calculateAge = () => {
   const todayDate = new Date()
   const todayYear = todayDate.getFullYear()
