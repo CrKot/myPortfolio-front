@@ -24,11 +24,9 @@
         </p>
         <div class="btn-group">
           <NuxtLink to="user/sign-up"
-            ><v-btn color="blue darken-1 btn" text>Регистрация</v-btn></NuxtLink
-          >
+            ><v-btn class="blue darken-1 btn" text>Регистрация</v-btn></NuxtLink>
           <NuxtLink to="user/sign-in"
-            ><v-btn color="blue darken-1 btn" text>Войти</v-btn></NuxtLink
-          >
+            ><v-btn class="blue darken-1 btn" text>Войти</v-btn></NuxtLink>
         </div>
       </div>
     </div>
@@ -55,20 +53,15 @@
   </v-container>
 </template>
 
-<script>
-import biography from '@/util/myBiography.ts'
+<script lang="ts">
+import biography from '@/util/myBiography'
 
 export default {
   data() {
     return {
       myBiography: biography,
-      show: false,
+      show: false as boolean,
     }
-  },
-  methods: {
-    test() {
-      window.location.href = 'https://github.com/CrKot/admin-panel'
-    },
   },
 }
 </script>
